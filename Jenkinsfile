@@ -31,7 +31,7 @@ pipeline {
 
        stage('SonarQube Analysis') {
           steps {
-          withSonarQubeEnv('sonarserver') {
+          withSonarQubeEnv('admin') {
     sh 'mvn sonar:sonar'
 }
     }
