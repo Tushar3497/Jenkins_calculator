@@ -1,5 +1,4 @@
 pipeline {
-
     agent any
 
     tools {
@@ -11,7 +10,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-             git branch: 'main',url: 'https://github.com/Tushar3497/Jenkins_calculator'
+                git branch: 'main', url: 'https://github.com/Tushar3497/Jenkins_calculator'
             }
         }
 
@@ -19,8 +18,6 @@ pipeline {
             steps {
                 bat 'mvn clean compile'
             }
-         
-         
         }
 
         stage('Run JUnit Tests') {
@@ -29,13 +26,13 @@ pipeline {
             }
         }
 
-       stage('SonarQube Analysis') {
-          steps {
-          withSonarQubeEnv('admin') {
-    sh 'mvn sonar:sonar'
-}
-    }
-}
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('admin') {
+                    bat 'mvn sonar:sonar'
+                }
+            }
+        }
 
     }
 }
